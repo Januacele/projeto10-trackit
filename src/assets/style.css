@@ -1,0 +1,18 @@
+
+  
+* {
+    box-sizing: border-box;
+
+    --cor-fundo-tela: #E5E5E5;
+    --cor-azul: #126BA5;
+  }
+  
+  body {
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--cor-fundo-tela);
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
+  }
