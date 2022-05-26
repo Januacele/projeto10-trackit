@@ -27,11 +27,15 @@ export default function TelaCadastro(){
                 }, 1500)
                 setDadosCadastro({ ...dadosCadastro, success: 'Conta cadastrada com sucesso!', error: null })
             }).catch(err => {
-                setDadosCadastro({ ...dadosCadastro, error: 'Erro ao fazer o cadastro'})
+                setDadosCadastro({ ...dadosCadastro, error: 'Erro ao fazer o cadastro. Aparentemente já existe uma conta com esse usuário.'})
                 console.log(err.response)
                 console.log(dadosCadastro)
             })
-        }         
+        }   
+
+        function refreshPage(){ 
+            window.location.reload(); 
+        }
 
     return (
         
@@ -62,7 +66,7 @@ export default function TelaCadastro(){
                 />
               
                 <input
-                type="url"
+                type="texto"
                 placeholder="foto"
                 required
                 onChange={e => setDadosCadastro({ ...dadosCadastro, foto: e.target.value })}
@@ -78,10 +82,9 @@ export default function TelaCadastro(){
                     </LinkLogin>
                 </Link>
                 {dadosCadastro.success !== undefined ? <h2>{dadosCadastro.success}</h2> : null}
-                {dadosCadastro.error !== null ? <h3>{dadosCadastro.error}</h3> : null}
+                {dadosCadastro.error !== null ? <h3 onClick={refreshPage}>{dadosCadastro.error}</h3>: null}
              </form> 
         </EstilizacaoTelaCadastro>
-        
     )
 }
 
@@ -161,6 +164,7 @@ align-self: start;
         font-family: 'Lexend Deca';
         font-size: 15px;
         color: blue;
+        cursor: pointer;
     }
     h4 {
         margin-top: 10%;
