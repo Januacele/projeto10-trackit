@@ -4,7 +4,7 @@ import TelaLogin from './TelaInicial/TelaLogin';
 import TelaCadastro from './TelaInicial/TelaCadastro';
 import TelaHabitos from './TelaHabitos/TelaHabitos';
 import TelaHoje from './TelaHoje/TelaHoje';
-import TelaHistorico from './TelaHistorico';
+import TelaHistorico from './TelaHistorico/TelaHistorico';
 
 export default function App(){
         return (

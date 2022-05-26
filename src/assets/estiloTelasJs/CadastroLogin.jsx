@@ -8,6 +8,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 align-self: start;
+background-color: #FFFFFF;
 
 @media (min-width: 768px) {
     width: 50%;
