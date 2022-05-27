@@ -8,6 +8,7 @@ import CadastroLogin from '../../assets/estiloTelasJs/CadastroLogin';
 
 export default function TelaCadastro(){
 
+
     const navigate = useNavigate();
     const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up`;
     const [dadosCadastro, setDadosCadastro] = useState({ 

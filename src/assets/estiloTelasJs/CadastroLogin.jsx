@@ -81,6 +81,14 @@ background-color: #FFFFFF;
         color: #52B6FF;
             }
 
+    h1 {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        color: red;
+        font-family: 'Lexend Deca';
+        font-size: 16px;
+        }
+
     h2 {
         margin-top: 10%;
         font-family: 'Lexend Deca';
@@ -109,4 +117,4 @@ background-color: #FFFFFF;
 `
 
 
-  export default CadastroLogin
+export default CadastroLogin
