@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import LogoTelaInicial from '../../assets/img/logo.svg';
-import CadastroLogin from '../../assets/estiloTelasJs/CadastroLogin';
+import CadastroLogin from './estiloCadastroLogin';
 
 export default function TelaCadastro(){
 
@@ -25,48 +24,49 @@ export default function TelaCadastro(){
                 setTimeout(() => {
                     navigate("/")
                 }, 1500)
-                setDadosCadastro({ ...dadosCadastro, success: 'Conta cadastrada com sucesso!', error: null })
-            }).catch(err => {
                 setDadosCadastro({ ...dadosCadastro, error: 'Erro ao fazer o cadastro. Aparentemente já existe uma conta com esse usuário.'})
+            }).catch(err => {
+                setDadosCadastro({ ...dadosCadastro, error: 'Erro ao fazer o cadastro'})
                 console.log(err.response)
                 console.log(dadosCadastro)
             })
-        }   
+        }         
 
         function refreshPage(){ 
             window.location.reload(); 
         }
 
+
     return (
-        
+
          <CadastroLogin>
-             <form onSubmit={HandleSubmit}> 
-           
-                <img src={LogoTelaInicial} alt="Logo-trackit" />    
-                     
+            <img src={LogoTelaInicial} alt="Logo-trackit" />    
+
+             <form onSubmit={HandleSubmit}>                
+
                 <input
                 type="email"
                 placeholder="email"
                 required
                 onChange={e => setDadosCadastro({ ...dadosCadastro, email: e.target.value })}
                 />
-                
+
                 <input
                 type="password"
                 placeholder="senha"
                 required
                 onChange={e => setDadosCadastro({ ...dadosCadastro, senha: e.target.value })}
                 />
-                               
+
                 <input
                 type="text"
                 placeholder="nome"
                 required
                 onChange={e => setDadosCadastro({ ...dadosCadastro, nome: e.target.value })}
                 />
-              
+
                 <input
-                type="texto"
+                type="url"
                 placeholder="foto"
                 required
                 onChange={e => setDadosCadastro({ ...dadosCadastro, foto: e.target.value })}
@@ -75,14 +75,15 @@ export default function TelaCadastro(){
                 <div>
                     <button onClick={HandleSubmit}> Cadastrar </button>
                 </div>
-                
+
                 <Link to={`/`}>
-                     <p> Já tem uma conta? Faça Login! </p>   
+                    <p> Já tem uma conta? Faça Login! </p>                     
                 </Link>
+
                 {dadosCadastro.success !== undefined ? <h2>{dadosCadastro.success}</h2> : null}
                 {dadosCadastro.error !== null ? <h3 onClick={refreshPage}>{dadosCadastro.error}</h3>: null}
              </form> 
         </CadastroLogin>
+
     )
 }
-
