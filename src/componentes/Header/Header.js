@@ -1,37 +1,72 @@
 import styled from "styled-components";
+import { useContext } from "react";
 
+import NameContext from "../../contexts/UserImageContext";
+import UserImageContext from "../../contexts/UserImageContext";
 import TrackIt from '../../assets/img/TrackIt.svg';
 
-export default function Header({userimg}){
+export default function Header(){
+
+    const { name } = useContext(NameContext);
+    const { userImage } = useContext(UserImageContext);
+
     return (
         <ContainerHeader>
             <img className="logo" src={TrackIt} alt="TrackIt"/>
-            <img src={userimg} alt='user' />
+
+            <div className="user-infos-container">
+                <p>Olá, {name}!</p>
+                <img className="user-image" src={userImage} alt="Sua foto" />
+            </div>
+
         </ContainerHeader>
     )
 }
 
 const ContainerHeader = styled.form`
-    postion: relative;
-    top: 0px;
-    width: 100%;
-    height: 70px;
     background-color: #126BA5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    height: 70px;
+    width: 100%;
+    padding-left: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    
-    img {
-        width: 60px;
-        height: 60px;
-        background: url(userimg);
-        border-radius: 100px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+
     .logo {
-        width: 100px;
-        margin-left: 20px;
+        width: 97px;
+        height: auto;
+        margin-left: 18px;
     }
+
+    .user-infos-container {
+        display: flex;
+        align-items: center;
+        margin-right: 18px;
+
+        p {
+            color: white;
+            font-family: 'Lexend Deca';
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 26px;
+        }
+        
+        img {
+            width: 51px;
+            height: 51px;
+            border-radius: 100px;
+            margin-left: 20px;
+            background-image: inherit;
+        }
+    }
+
+    
+
+    
+   
 `

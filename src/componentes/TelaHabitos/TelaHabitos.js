@@ -1,13 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
-
+import { ThreeDots } from "react-loader-spinner";
+import axios from "axios";
 
 import Header from "../Header/Header";
+import CriarHabito from "./CriarHabito";
+import Habito from "./Habito";
+import Menu from "./Menu";
 import TokenContext from "../../contexts/TokenContext";
 
 
 export default function TelaHabitos() {
 
+    const [habitos, setHabitos] = useState(null);
+    const [criarHabito, setCriarHabito] = useState(false);
+    const [atualizaHabitosHoje, setAtualizaHabitosHoje] = useState(false);
 
     const { token } = useContext(TokenContext);
 
@@ -17,23 +24,80 @@ export default function TelaHabitos() {
         }
     }
 
+    function requisicaoAxios() {
+        const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
 
-    return (
+        promise.then(response => {
+            const { data } = response;
+            console.log(data);
+            setHabitos(data);
+            setAtualizaHabitosHoje(!atualizaHabitosHoje);
+        });
+
+        promise.catch(err => console.log(err.response.status));
+    }
+    useEffect(() => {
+        requisicaoAxios();
+    }, []);
+
+    function renderizarCriarHabito() {
+        return criarHabito ? (
+            <CriarHabito
+                setCriarHabito={setCriarHabito}
+                requisicaoAxios={requisicaoAxios}
+            />
+        ) : null
+    }
+
+    return habitos !== null && habitos.length < 1 ? (
         <>
             <Header />
             <Div>
                 <header>
                     <h1>Meus hábitos</h1>
-                    <button>+</button>
+                    <button onClick={() => setCriarHabito(true)}>+</button>
                 </header>
+                {
+                    renderizarCriarHabito()
+                }
                 <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
             </Div>
+            <Menu atualizaHabitosHoje={atualizaHabitosHoje} />
         </>
+    ) : (
+        habitos !== null ?
+            <>
+                <Header />
+                <Div>
+                    <header>
+                        <h1>Meus hábitos</h1>
+                        <button onClick={() => setCriarHabito(true)}>+</button>
+                    </header>
+                    {
+                        renderizarCriarHabito()
+                    }
+                    {
+                        habitos.map(habito => {
+                            const { id, name, days } = habito;
+                            return <Habito key={id} id={id} name={name} days={days} requisicaoAxios={requisicaoAxios} />
+                        })
+                    }
+                </Div>
+                <Menu atualizaHabitosHoje={atualizaHabitosHoje} />
+            </> : (
+                <Div>
+                    <div className="tela-carregando">
+                        <ThreeDots color="#126BA5" height={50} width={50} />
+                    </div>
+                </Div>
+            )
     )
 }
 
 const Div = styled.div`
-    margin-top: 30px;
+    box-sizing: border-box;
+    margin-top: 70px;
+    background-color: #F2F2F2;
     font-family: 'Lexend Deca';
     padding: 22px 18px 110px 18px;
     height: auto;
@@ -70,6 +134,9 @@ const Div = styled.div`
         line-height: 22px;
     }
 
-
-    
+    .tela-carregando {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }  
 `;
