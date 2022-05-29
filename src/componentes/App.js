@@ -21,7 +21,7 @@ export default function App() {
     const [progress, setProgress] = useState(0);
 
     return (
-        <div>
+        <Div>
             <TokenContext.Provider value={{ token, setToken }}>
                 <NameContext.Provider value={{ name, setName }}>
                     <UserImage.Provider value={{ userImage, setUserImage }}>
@@ -43,7 +43,7 @@ export default function App() {
                     </UserImage.Provider>
                 </NameContext.Provider>
             </TokenContext.Provider>
-        </div >
+        </Div >
     );
 }
 

@@ -103,6 +103,15 @@ const Div = styled.div`
         align-items: center;
     }
 
+    img{
+        position: absolute;
+        left: 78.67%;
+        right: 11.98%;
+        top: 31.48%;
+        bottom: 64.32%;
+        background: #FFFFFF;
+    }
+
     .feito {
         background-color: #8FC549;
     }
