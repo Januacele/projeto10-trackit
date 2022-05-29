@@ -67,7 +67,6 @@ export default function HabitoHoje(props){
 
 const Div = styled.div`
 
-    box-sizing: border-box;
     margin-bottom: 10px;
     background-color: white;
     padding: 13px;
@@ -92,24 +91,16 @@ const Div = styled.div`
     }
 
     button {
-        width: 69px;
-        height: 69px;
+        width: 68px;
+        height: 68px;
         border: 1px solid #E7E7E7;
-        box-sizing: border-box;
         border-radius: 5px;
         border-style: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    img{
-        position: absolute;
-        left: 78.67%;
-        right: 11.98%;
-        top: 31.48%;
-        bottom: 64.32%;
-        background: #FFFFFF;
+        img{
+            width: 35px;
+            height: 28px;
+        }
     }
 
     .feito {
