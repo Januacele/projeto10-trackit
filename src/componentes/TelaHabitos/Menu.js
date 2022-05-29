@@ -104,6 +104,7 @@ const Div = styled.div`
         line-height: 22px;
         text-align: center;
         color: #52B6FF;
+        text-decoration: none;
     }
 
     .progressbar {
