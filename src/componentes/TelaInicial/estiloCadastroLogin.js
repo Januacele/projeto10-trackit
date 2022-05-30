@@ -112,33 +112,6 @@ background-color: #FFFFFF;
         font-weight: bold;
         color: orange;
     }
-    .select-auto-image {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .select-auto-image label {
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 25px;
-        color: #666666;;
-    }
-
-    .checkbox {
-        width: 15px;
-        height: 15px;
-        border: 1px solid #D5D5D5;
-        box-sizing: border-box;
-        border-radius: 5px;
-        margin-top: 7px;
-        margin-right: 10px;
-        padding-left: 11px;
-        overflow-x: hidden;
-        font-weight: 400;
-        font-size: 19.976px;
-        line-height: 25px;
-    }
 
 `
 
