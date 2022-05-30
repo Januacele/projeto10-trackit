@@ -72,6 +72,11 @@ export default function TelaCadastro(){
                 onChange={e => setDadosCadastro({ ...dadosCadastro, foto: e.target.value })}
                 />
 
+                <div className="select-auto-image">
+                    <input className="checkbox" type="checkbox" id="userAvatar" name="usarAvatar" value="image" onClick={definirImagemPadrao}/>
+                    <label htmlFor="userAvatar">Usar imagem padrão</label>
+                </div>
+                
                 <div>
                     <button onClick={HandleSubmit}> Cadastrar </button>
                 </div>
