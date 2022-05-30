@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { useContext } from "react";
 
-import NameContext from "../../contexts/UserImageContext";
 import UserImageContext from "../../contexts/UserImageContext";
 import TrackIt from '../../assets/img/TrackIt.svg';
 
 export default function Header(){
 
-    const { name } = useContext(NameContext);
     const { userImage } = useContext(UserImageContext);
 
     return (
@@ -15,7 +13,6 @@ export default function Header(){
             <img className="logo" src={TrackIt} alt="TrackIt"/>
 
             <div className="user-infos-container">
-                <p>Olá, {name}!</p>
                 <img className="user-image" src={userImage} alt="Sua foto" />
             </div>
 
@@ -48,13 +45,6 @@ const ContainerHeader = styled.form`
         align-items: center;
         margin-right: 18px;
 
-        p {
-            color: white;
-            font-family: 'Lexend Deca';
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 26px;
-        }
         
         img {
             width: 51px;

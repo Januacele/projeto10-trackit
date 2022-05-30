@@ -22,12 +22,12 @@ const Div = styled.div`
 
     width: 100%;
     height: 100vh;
-    margin-top: 70px;
     font-family: 'Lexend Deca';
     padding: 28px 20px 0px 20px;
    
 
     h1 {
+        margin-top: 70px;
         font-weight: 400;
         font-size: 23px;
         line-height: 29px;
